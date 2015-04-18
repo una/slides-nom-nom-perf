@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>A Primer on Performance</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<!-- This is our theme -->
+		<link rel="stylesheet" href="css/theme/nomnomperf.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section class="intro-slide" data-background="img/intro-img.jpg">
+					<h1 class="intro-text">Have Your Cake <br>And Eat it Too: <br><span style="font-size:.5em">A Primer on Performance</span></h1>
+					<ul class="intro-data">
+						<li class="team-name">PEERS Conf</li>
+						<li></li>
+						<li>Una Kravets | <span class="font-weight:800">@una</span></li>
+					</ul>
+					<aside class="notes">
+						<li>make something people love ---> cake</li>
+					</aside>
+				</section>
+
+				<section>
+					<h1 style="font-size: 3.5em">Good Morning PEERS!</h1>
+				</section>
+
+				<section class="center">
+					<img src="img/wedding-cake.jpg" height="533" width="400" alt="Wedding Cake">
+					<aside class="notes">
+					<li>Ths cake is our product</li>
+					<li>cake == a metaphor of how performance is a team effort<li>
+					<li>many different roles, specialized</li>
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>per·for·mance</h2>
+						<h4> /pərˈfôrməns/</h4>
+						<p>
+							an action, task, or operation, seen in terms of how <strong>successfully</strong> it was performed
+						</p>
+						<aside class="notes">
+							<li>measure of succes = crux of our job</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1>Performance is Our Biggest Job</h1>
+
+						<aside class="notes">
+							<li>Performance is a mark of user success with our products, as dictionary.com just told us</li>
+							<li>Beautiful != Useable</li>
+							<li>Useable > Beautiful</li>
+							<li>if somebody cant access our content, then whats the point of putting it out there in the first place</li>
+							<li>Beautiful + Useable = Delightful Experience</li>
+						</aside>
+					</section>
+
+					<section>
+						<blockquote>
+							Amazon's calculated that a page load slow-down of just one second could cost it <strong>$1.6 billion</strong> in sales each year.
+							<footer>- <a href="http://www.montparnas.com/articles/more-evidence-that-speed-is-key-to-user-experience/">A 2009 A/B Study</a></footer>
+						</blockquote>
+						<aside class="notes">
+							<li>numerous studies -- th evidence is staggering</li>
+							<li>Perf is key in product success</li>
+						</aside>
+					</section>
+
+					<section>
+						<blockquote>
+							Google has calculated that by slowing its search results by just <strong>four tenths</strong> of a second they could lose <strong>8 million</strong> searches per day.
+							<footer>- <a href="http://www.fastcompany.com/1825005/how-one-second-could-cost-amazon-16-billion-sales">FastCompany</a></footer>
+						</blockquote>
+						<aside class="notes">
+							<ul>
+								<li>That's a lot of missed ads and revenue. In fact, let's look at the numbers:</li>
+								<li>a daily loss of $111,000, or about $40.5 Million a year</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/burning-money.gif">
+					</section>
+
+					<section>
+						<blockquote>According to surveys done by <a href="https://blog.kissmetrics.com/speed-is-a-killer/">Akamai and Gomez.com</a>, nearly half of web users expect a site to load in <strong>2 seconds or less</strong>, and they tend to <strong>abandon</strong> a site that isn’t loaded within 3 seconds.</blockquote>
+					</section>
+
+					<section data-state="smiley-rolls">
+						<h2>
+							1/4 internet users abandon a page that takes more than 4 seconds to load
+						</h2>
+						<div class="users" style="overflow:hidden; height:160px">
+							<img style="width: 15%; margin-right:5%; display: inline-block;" src="img/Happy_smiley_face.png" alt="happy user">
+							<img style="width: 15%; margin-right:5%; display: inline-block;" src="img/Happy_smiley_face.png" alt="happy user">
+							<img style="width: 15%; margin-right:5%; display: inline-block;" src="img/Happy_smiley_face.png" alt="happy user">
+							<img style="width: 15%; display: inline-block;" src="img/Happy_smiley_face.png" alt="happy user">
+						</div>
+						<aside class="notes">
+
+						</aside>
+					</section>
+
+					<section class="center">
+						<img style="width:100%;" src="img/Jakob-Nielsen-response-time-infographic.jpg">
+						<aside class="notes">
+						<li>performance speed vs interaction with the product</li>
+						<li>- 0.1 second - system reacting instantaneously</li>
+						<li>- 1.0 second - the limit for the user's flow of thought to stay uninterrupted, noticeable delay</li>
+						<li>- 10 seconds is about the limit for keeping the user's attention focused on the dialogue</li>
+						</aside>
+					</section>
+
+					<section>
+						<blockquote>
+						73% of mobile internet users say that they’ve encountered a website that was too slow to load.
+						</blockquote>
+						<br>
+
+						<blockquote class="fragment">51% of mobile internet users say that they’ve encountered a website that crashed, froze, or received an error.
+						<footer><a href="https://blog.kissmetrics.com/loading-time/">Kiss Metrics</a></footer>
+						</blockquote>
+						<aside class="notes">
+							We all know these pains far too well. Lets not inflict them upon others.
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/facepalm.gif" alt="Facepalm gif">
+					</section>
+
+					<section class="center">
+						<h1>It's about <a href="http://www.webperformancetoday.com/2012/03/21/neuroscience-page-speed-web-performance/">Neuroscience</a></h1>
+						<aside class="notes">
+						<li>Tammy Everts -- its about neuroscience, not entitlement</li>
+						<li>Comes down to 2 phenomenons:</li>
+						<li>Web Stress</li>
+						<li>The Doorway Effect</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1 class="center">Web Stress</h1>
+						<aside class="notes">
+							<li>Slow pages cause “web stress”: physically measurable increased agitation and poorer concentration. because of poor short term memory. Humans aren't good at remembering things. Doorway Effect</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1 class="center">The Doorway Effect</h1>
+						<img class="center fragment" src="img/dudewhersmycar.gif" alt="">
+						<aside class="notes">
+							Doorway Effect explains why we can go searching for something in one room, walk into another room to look for it, and forget what we were looking for in the first place. This is due to our sensory memory, which works surprisingly similarly to a computer's memory bank. When presented with new stimuli, it halts the fluidity of the previous task, and can confuse us as to the task at hand.
+						</aside>
+					</section>
+
+					<section>
+						<img class="fragment" src="img/learning-types0.svg" alt="">
+						<aside class="notes">
+							<li>Sensory memory = all of your senses</li>
+							<li>Continuation of a fluid task</li>
+							<li>example of iconic memory as a representation</li>
+							<li>on the internet, each new tab is like stepping into a new room</li>
+							<li>very easy for user to get distracted, move on to another task, and forget what they were trying to do or find in your app in the first place</li>
+							<li>perf becomes critical for keeping users on track</li>
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					<h1 style="font-weight:900" class="fragment">1000 PSI</h1>
+					<h1 style="font-weight:900" class="fragment">14 KB</h1>
+					<h1 style="font-weight:900" class="fragment">1 MB</h1>
+					<aside class="notes">
+						Before we move on, some important numbers:
+						<li>These are our goals, and we're going to look at how we will all work together to achieve these goals</li>
+						<li>On WebPageTest, aim for a Speed Index value of under 1000.</li>
+						<li>"Time to first byte": Ensure that all HTML, CSS and JavaScript fit within the first 14 KB.</li>
+						<li>these are the ideals we'll be striving for</li>
+						<li>1MB is the total download size we're going for on the site. Keep in mind data plans != cheap</li>
+					</aside>
+				</section>
+
+				<section>
+					<section class="center">
+						<h1>UX Architecture</h1>
+						<img class="center" style="width:80%;" src="img/Creme-Egg-Cake-Base-Ready-marthafied.com_-1024x697.jpg">
+						<aside class="notes">
+							<li>the base upon which the cake stands -- the crux, the core, the product users interact with and taste</li>
+						</aside>
+					</section>
+
+					<section data-background="img/foodbg.jpg" data-background-size="400px" data-background-repeat="repeat">
+						<h2 style="background: white; display:inline-block; padding:.5em;">Content Strategy</h2>
+						<aside class="notes">
+							<li>content is what you decide to put into the cake -- its ingredients -- you wouldn't mix onion powder and eggnog and cherries. limit yourself to only content or ingredients that blend well together and are needed to support your recipe, or app.</li>
+							<li>Already had sessions on this -- wont go into it -- its just important to remember how important it is for perf to consider what you're serving up in the first place</li>
+						</aside>
+					</section>
+
+					<section class="center present" style="top: -293px; display: block;">
+						<h2>Why care about content strategy?</h2>
+						<dl class="labeled-list">
+							<div class="fragment visible" data-fragment-index="0">
+								<dt>Having an understanding of a product owner's content is imperative in order to produce an effective product/presentation/website/app/etc.</dt>
+							</div>
+							<div class="fragment visible" data-fragment-index="1">
+								<dt>Content strategy determines the success of the final product.</dt>
+							</div>
+							<div class="fragment visible" data-fragment-index="2">
+								<dt>Content is King.<br>
+								<img src="http://i.giphy.com/gf6iP1NIcDk7S.gif" alt="Kitty King"></dt>
+							</div>
+						</dl>
+					</section>
+
+				</section>
+
+				<section>
+					<section class="center">
+						<h1>UI Design</h1>
+						<img src="img/Professional-lego-cake-idea.jpg" alt="lego cake!">
+						<aside class="notes">
+							<li>visual representation of your masterpiece</li>
+							<li>Designers need to understand their craft</li>
+							<li>supplies and tools with which they are building</li>
+							<li>differences between icing types and where to place little legos -- this parallels image choices and design decisions</li>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Image Types</h2>
+						<img src="img/RasterBlog2.png" class="half-left" alt="">
+						<img src="img/VectorBlog3.png" class="half-right" alt="">
+						<aside class="notes">
+							<li>Raster, or bitmap, images are made of pixels.</li>
+							<li>A pixel is a single point or the smallest single element in a display device. (can vary device to device)</li>
+							<li>Vector images are mathematical calculations from one point to another that form geometrical shapes</li>
+							<li>no loss of quality when scaled up</li>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Image Types</h2>
+						<img class="center" src="img/data_models_buffer.gif" alt="">
+					</section>
+
+					<section>
+						<h2>File Types</h2>
+						<ul>
+							<li class="fragment"><p>jpg</p>
+									<img src="img/persona-example.jpg" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p>png-8</p>
+									<img src="img/png-8.png" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p>png-24</p>
+									<img src="img/png-24.png" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p>gif</p>
+									<img style="width:400px" src="img/dancing-banana.gif" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p>svg</p>
+									<img src="img/SVG.svg" alt="" class="file-type-image">
+							</li>
+						</ul>
+
+						<aside class="notes">
+							<li>.jpg – Lossy Format, great for photographs, images with a lot of color</li>
+							<li>.png (8-bit) – Lossless Compression type, limited color range -- may be artifacts</li>
+							<li>PNG-8 refers to palette variant, which supports only 256 colors, but is smaller in size.</li>
+							<li>PNG-24 refers to true color variant, which supports more colors, but might be bigger</li>
+							<li>.gif – Lossless with limited color range like .png 8, but .png is usually the better choice.</li>
+							<li>svg - vector graphics, can be exported from illustrator or sketch</li>
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/gif-vs-png-vs-jpg.png" alt="">
+					</section>
+
+					<section class="center">
+						<img src="img/Save-for-web.jpg" alt="">
+					</section>
+
+					<section data-background="#5aaafa">
+						<blockquote>
+							"Never put an image on the web that you haven't optimized"
+							<footer>- Dave Rupert</footer>
+						</blockquote>
+					</section>
+
+					<section>
+						<h2>Compression Tools</h2>
+						<ul>
+							<li class="fragment"><p><a href="http://pngmini.com/">ImageAlpha (png-24)</a></p>
+									<img src="img/imgalpha.png" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p><a href="https://tinypng.com/">TinyPNG</a></p>
+									<img style="width: 248px" src="img/tinypng.jpg" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p><a href="https://imageoptim.com/">ImageOptim (png, gif, jpg)</a></p>
+									<img style="width: 268px" src="img/imgoptim.png" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p><a href="https://compressor.io/">Compressor.io (png, gif, svg)</a></p>
+									<img src="img/compressorio.png" alt="" class="file-type-image">
+							</li>
+							<li class="fragment"><p><a href="http://petercollingridge.appspot.com/svg_optimiser">SVG Optimizer</a></p>
+									<img style="display: block; padding-bottom:200px;" src="img/svgo-gui.png" alt="" class="file-type-image">
+							</li>
+						</ul>
+						<aside class="notes">
+							<li>ImageAlpha is a way of reducing colors in a png-24 to turn it into a lossy png with your consent. You manage a toolbar and make decisions</li>
+							<li>TinyPNG: integrate into build tools</li>
+							<li>ImageOptim goes through lossless compression algorithms to get the smallest size</li>
+							<li>compressor.io <-- web version</li>
+							<li><a href="img/svgo.png"></a></li>
+							<li>http://addyosmani.com/blog/image-optimization-tools/</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1 style="font-weight:800">Oh Em Gee, Una! Won't That Make My Beautiful Images Look Terrible And Pixelated!?</h1>
+					</section>
+
+					<section class="center">
+						<img src="img/no.gif" height="233" width="233" alt="">
+					</section>
+
+					<section>
+						<h1>Compressive Images</h1>
+						<img src="img/compressive.png" alt="">
+						<a class="fragment" href="http://www.filamentgroup.com/lab/compressive-images.html">Further Reading: Filament Group on Compressive Images</a>
+						<aside class="notes">By saving a JPG image at double size but at 0% quality and allowing the browser to scale it to fit a smaller placeholder, you can reduce the image weight whilst increasing the bit depth; great for using one image for retina and non-retina displays. </aside>
+					</section>
+
+					<section class="center">
+						<img src="img/puppy-with-hanging-tongue-in-a-towel-big.jpg" height="540" width="640" alt="">
+						<p>size: 109kb</p>
+					</section>
+
+					<section class="center">
+						<img src="img/compressing.png" alt="">
+					</section>
+
+					<section class="center">
+						<img src="img/puppy-with-hanging-tongue-in-a-towel-big-2.jpg" height="540" width="640" alt="">
+						<p>size: 49kb</p>
+					</section>
+
+					<section>
+						<div class="half-left">
+							<img src="img/puppy-with-hanging-tongue-in-a-towel-big.jpg" alt="">
+							<p>size: 109kb</p>
+						</div>
+						<div class="half-right">
+							<img src="img/puppy-with-hanging-tongue-in-a-towel-big-2.jpg" alt="">
+							<p>size: 49kb</p>
+						</div>
+					</section>
+
+					<section>
+						<h1>Progressive Jpegs: A Blast from the Past</h1>
+						<img src="img/progressivepjpeg.jpg" class="center" height="474" width="793" alt="">
+						<aside class="notes">
+						<li>There are two primary types of JPEG images, baseline and progressive</li>
+						<li>Webpage Test Warns You of this</li>
+						<li>A simple or "baseline" JPEG file is stored as one top-to-bottom scan of the
+						image.  Progressive JPEG divides the file into a series of scans.</li>
+						<li>http://blog.patrickmeenan.com/2013/06/progressive-jpegs-ftw.html</li>
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/progjpgexample.jpg" alt="">
+						<aside class="notes">
+							<li>they are a tiny bit bigger than baseline jpegs but thats because they load in layers and not top to bottom</li>
+							<li>in this example, the size difference was only 2kilobytes</li>
+							<li>Progressive JPEGs are better because they are faster. Appearing faster is being faster, and perceived speed is more important that actual speed. Even if we are being greedy about what we are trying to deliver, progressive JPEGs give us as much as possible as soon as possible. -- Ann Robson</li>
+						</aside>
+					</section>
+
+					<section class="center" data-background="#FCF3E4">
+						<h1>Retina Images</h1>
+						<img src="img/Fancy.jpg" alt="">
+						<aside class="notes">
+							<li>goes back to the content strategy side of things -- showing why its important to understand the whole process</li>
+							<li>retina images look nice on screens but are really terrible for users</li>
+							<li>data plans aren't cheap</li>
+							<li>reducing the number of download size</li>
+							<li>download size needs to be < 1mb including images</li>
+						</aside>
+					</section>
+
+					<section>
+					<img src="img/jqueryloading.png" alt="">
+						<aside class="notes">
+							<li>speaking of being considerate of images, think about your code in this way too</li>
+							<li>jQuery loading times across devices -- on the same network</li>
+							<li>not everyone is using the same nice new MacBook Pros that we get here</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1>Jank!</h1>
+						<h2>60 FPS FTW</h2>
+						<aside class="notes">
+							<li>This is a real term. Jank is any stuttering, juddering or just plain halting that users see when a site or app isn't keeping up with the refresh rate (which is 60 times per second). Think: slow, crappy, or janky parallax experience.</li>
+							<li>frame rate on mobile will ALWAYS be different than on desktop -- so test on mobile</li>
+							<li>jankfree.com</li>
+							</aside>
+					</section>
+
+					<section class="center">
+					<img  class="fragment" src="img/frames_mode.png">
+						<aside>
+								<li>you can see how your page is rendering when you open the timeline mode in Chrome dev tools and select Frames</li>
+								<li>Hit record, do something, stop it, inspect</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1>Layout Thrashing</h1>
+						<h2>Avoid the dreaded document reflow!</h2>
+						<aside class="notes">
+							<li><b>Layout Thrashing</b> occurs when JavaScript violently writes, then reads, from the DOM, multiple times causing document reflows.</li>
+							<li>Kills performance</li>
+							<li>Really bad on mobile devices</li>
+						</aside>
+					</section>
+
+
+					<section>
+						<iframe style="width: 100%; height: 500px;" src="http://csstriggers.com" frameborder="0"></iframe>
+					</section>
+
+					<section>
+						<img src="img/cheap-operations.jpg" class="center" alt="">
+						<aside class="notes">http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/</aside>
+					</section>
+
+					<section>
+						<h2>Typography</h2>
+						<p><strong>FOIT:</strong> Flash of Invisible Type</p>
+						<img class="center" src="img/fastco.jpg" alt="">
+
+						<aside class="notes">
+						<li>We have to be careful about typography</li>
+						<li>Browsers may wait for fonts to load before displaying the page</li>
+						<li>Custom fonts represent a potential single point of failure for a usable site</li>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Recommendations for Performant Typography:</h2>
+						<ul>
+						<li>To avoid this, here are a few recs</li>
+							<li class="fragment">Webfont formats: .ttf, .woff, .woff2</li>
+							<li class="fragment">2-5 Custom Fonts (including weights)</li>
+							<li class="fragment">Use a fallback font (Helvetica, Ariel)</li>
+							<li class="fragment"><strong>Subset</strong> typography in titles to avoid unused characters</li>
+							<li class="fragment">Do not block page render with @font-face definitions</li>
+						</ul>
+						<aside class="notes">
+						<li>woff == web open font format</li>
+						<li>you can use WOFF2 as a Base64 encoded string</li>
+						<li>new WOFF 2.0 Web Font compression format offers a 30% average gain over WOFF 1.0 (up to 50%+ in some cases). WOFF 2.0 is available since Chrome 36 and Opera 23</li>
+						<li>instead of referencing your fonts via links in the < head > or via @import statements in an external stylesheet, try to load your fonts and font content asynchronously. </li>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section class="center">
+						<h1>Front End Development</h1>
+						<img src="img/cupcaketruck.jpg" style="width:80%;" alt="Cupcake Truck">
+						<aside class="notes">
+							<li>dev = the delivery</li>
+							<li>its great if you've made a beautiful cake that tastes wonderful, but if you can't get it to your customer on time, then whats the point?</li>
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/sande-1.png" alt="">
+						<img class="fragment" src="img/sande-2.png" alt="">
+						<aside class="notes">
+							<li>its so important to understand these distinctions</li>
+							<li>avoid using bloated frameworks where we can and built elements from the core up</li>
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/separation-concerns.png" alt="">
+						<aside class="notes">
+							<li>the ideal waterfall is this Separation of Concerns</li>
+							<li>Core content:<br>
+							Essential HTML and CSS, usable non-JavaScript-enhanced experience</li>
+							<li>Enhancement:<br>
+							JavaScript, geolocation, touch support, enhanced CSS, web fonts, images, widgets</li>
+							<li>Leftovers:<br>
+							Analytics, advertising, third-party content</li>
+							<li></li>
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/image01.png" alt="">
+					</section>
+
+					<section>
+					<style>.cmat {
+						font-weight: 800 !important;
+						color: #000 !important;
+						}</style>
+						<h1 class="cmat">CMAT</h1>
+						<h2 class="fragment">Concatenate</h2>
+						<h2 class="fragment">Minify</h2>
+						<h2 class="fragment">Async</h2>
+						<h2 class="fragment">Test</h2>
+						<aside class="notes">
+							and the way we will achieve that ideal waterfall is to think: CMAT
+						</aside>
+					</section>
+
+					<section style="height:600px;">
+						<h1><span class="cmat">C: </span>Concatenate</h1>
+						<div class="fragment">
+							<p>Pull your files into one to minimize requests.</p>
+							<li class="fragment"><p>Images</p>
+								<div class="right C-image-area">
+									<img src="img/C-cowsheet.png">
+								</div>
+							</li>
+							<li class="fragment"><p>CSS</p>
+								<div class="right C-image-area">
+									<pre><code class="scss">@import 'vendors/bootstrap';
+@import 'vendors/jquery-ui';
+
+@import 'utils/variables';
+@import 'utils/functions';
+@import 'utils/mixins';
+@import 'utils/placeholders';
+
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'layout/navigation';
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import 'layout/forms';
+
+@import 'components/buttons';
+@import 'components/carousel';
+@import 'components/cover';
+@import 'components/dropdown';
+
+@import 'pages/home';
+@import 'pages/contact';
+
+@import 'themes/theme';
+@import 'themes/admin';</code></pre>
+								</div>
+							</li>
+							<li class="fragment"><p>Javascript</p>
+								<div class="right C-image-area">
+								<pre class="fragment"><code class="js"><!-- index.html // DONT DO THIS! -->
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="js/vendor/shake.js"></script>
+<script src="js/vendor/fastbutton.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/tabTime.js"></script>
+<script src="js/clickAnIngredient.js"></script></code></pre>
+									<pre class="fragment"><code class="js"><!-- Gulpfile.js // DO THIS INSTEAD! -->
+var concat = require('gulp-concat');
+
+gulp.task('scripts', function() {
+  gulp.src(['./lib/file3.js', './lib/file1.js', './lib/file2.js'])
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./dist/'))
+});</code></pre>
+								</div>
+							</li>
+						</div>
+						<aside class="notes">
+							<li>images: spriting</li>
+							<li>CSS: write modular Sass, and then have a manifest file to pull all of your code into one to be processed into a single css file</li>
+							<li>javascript: same thing, we want as few requests to the sever as possible</li>
+						</aside>
+					</section>
+
+					<section data-background="#000" class="inverted">
+						<blockquote>
+							The <strong>fastest</strong> HTTP request is the one not made.
+							<footer>-Steve Souders, <i>Head Performance Engineer, Google</i></footer>
+						</blockquote>
+						<aside class="notes">
+							words to live by
+						</aside>
+					</section>
+
+					<section style="height:600px;">
+						<h1><span class="cmat">M: </span>Minify</h1>
+						<div class="fragment">
+							<p>Make those files as small as possible.</p>
+							<li class="fragment"><p>Images</p>
+								<div class="right C-image-area" style="top: 240px; margin: 0 auto">
+									<img src="img/imageoptim-image-compressor-effectiveness.jpg">
+								</div>
+							</li>
+							<li class="fragment"><p>CSS</p>
+								<div class="right C-image-area">
+									<pre><code style="word-break: break-word;" class="css">body,fieldset,form,html,legend,li,ol,ul{margin:0;padding:0}h1,h2,h3,h4,h5,h6,p{margin-top:0}fieldset,img{border:0}legend{color:#000}li{list-style:none}sup{vertical-align:text-top}sub{vertical-align:text-bottom}table{border-collapse:collapse;border-spacing:0}caption,td,th{text-align:left;vertical-align:top;font-weight:400}input,select,textarea{font-size:110%;line-height:1.1}abbr,acronym{border-bottom:.1em dotted;cursor:help}*,:after,:before{margin:0;padding:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html{-webkit-font-smoothing:antialiased;height:100%}body{font-family:"Carrois Gothic",sans-serif;font-weight:400;padding:2em 10% 4em;max-width:1000px;margin:0 auto;background:#eef0f0;min-height:100%;position:relative}h1,h2,h3{font-family:"Fjalla One",serif;font-weight:700}h1{font-size:3.5em;margin-bottom:.25em;color:#5ab1bb}h2{color:#4e6766;font-family:"Carrois Gothic",sans-serif;text-transform:uppercase;font-size:.9em;letter-spacing:2px}</code></pre>
+															</div>
+														</li>
+							<li class="fragment"><p>Javascript</p>
+								<div class="right C-image-area">
+									<pre><code style="word-break: break-word;" class="css">!function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l="1.11.2",m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.toUpperCase()};m.fn=m.prototype={jquery:l,constructor:m,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=m.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return m.each(this,a,b)},map:function(a){return this.pushStack(m.map(this,function(b,c){return a.call(b,c,b)}))},slice:function(){return this.pushStack(d.apply(this,arguments))},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},eq:function(a){var b=this.length,c=+a+(0>a?b:0);return this.pushStack(c>=0&&b>c?[this[c]]:[])},end:function(){return this.</code></pre>
+								</div>
+							</li>
+					</div>
+					</section>
+
+					<section>
+						<h1>The Critical Rendering Path</h1>
+						<p class="fragment">The intermediate steps between receiving the HTML, CSS, and JavaScript bytes and the required processing to turn them into rendered pixels</p>
+						<aside class="notes">
+							<li>Before we talk about how to load your js,</li>
+							<li>if you can avoid JavaScript or replace it with CSS, do that</li>
+							<li>if not, you need to think about the "critical rendering path"</li>
+							<li>This is all about getting your priorities in orderand what the user will see first</li>
+							<li>By optimizing the critical rendering path we can significantly improve the time to first render of our pages.</li>
+							<li>optimize the delivery of content, and defer the rest</li>
+						</aside>
+					</section>
+
+					<section>
+						<h1><span class="cmat">A: </span>Async</h1>
+						<div class="fragment">
+							<p>Manage How Your Scripts load with <a href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">Async & Defer.</a></p>
+							<ul>
+								<li class="fragment" style="list-style: none; width:100%;">
+									<h3 style="margin-bottom:0">&lt;script src="..."&gt;</h3>
+									<img src="img/script.svg" alt="">
+								</li>
+								<li class="fragment" style="list-style: none; width:100%;">
+									<h3 style="margin-bottom:0">&lt;script src="..." async&gt;</h3>
+									<img src="img/script-async.svg" alt="">
+								</li>
+								<li class="fragment" style="list-style: none; width:100%;">
+								<h3 style="margin-bottom:0">&lt;script src="..." defer&gt;</h3>
+								<img src="img/script-defer.svg" alt="">
+								</li>
+							</ul>
+							<aside class="notes">
+								<li>Remember your separation of concerns, and remember to separate HTML as markup, CSS as presentational, and JS as functional</li>
+								<li>try not to make JS presentational if you can</li>
+							</aside>
+					</section>
+
+					<section class="center">
+						<h1>Critical CSS</h1>
+						<img src="img/progressive-rendering.png"alt="">
+
+						<aside class="notes">
+							<li>CSS is also a part of your critical rendering path</li>
+							<li>you can make it even more performant by inlining your CSS styles</li>
+						</aside>
+					</section>
+
+					<section class="center">
+						<img src="img/inlinecss.png" alt="">
+						<aside class="notes">
+							<li>seems weird at first -- like its against old best practices, but like progressive jpgs and skinny jeans, whats old is new again</li>
+						</aside>
+					</section>
+
+					<section>
+					<img src="img/bookmarklet-abovefold.jpg">
+					<ul>
+						<li>
+						<a href="http://addyosmani.com/blog/detecting-critical-above-the-fold-css-with-paul-kinlan-video/">Above the Fold Bookmarklet</a></li>
+						<li>
+						<a href="https://github.com/pocketjoso/penthouse">Penthouse Plugin</a>
+						</li>
+						</ul>
+						<aside class="notes">
+							several tools to help -- bookmarklet and plugins for task runners
+						</aside>
+					</section>
+
+					<section>
+						<blockquote>"We don’t need to render the entire page in one second, [just] the above the fold content."
+						<footer>- Ilya Grigorik</footer>
+						</blockquote>
+					</section>
+
+					<section>
+						<h1><span class="cmat">T: </span>Test</h1>
+						<div class="fragment">
+							<p>Check Your Performance</p>
+							<h2><span class="fragment">Render. </span> <span class="fragment"> Display. </span> <span class="fragment">Interact.</span></h2>
+							<img src="img/perfloading.png" alt="" class="fragment">
+							<aside class="notes">
+								the things that front end developers are concerned with: time to render, time to display, and time to interact
+							</aside>
+					</section>
+
+					<section class="center">
+						<h1>Chrome Dev Tools</h1>
+					</section>
+
+					<section>
+						<h1>Network Panel</h1>
+						<img src="img/chrome-network.png" alt="">
+					</section>
+
+					<section>
+						<h1>Audits Panel</h1>
+						<img src="img/chrome-audits.png" alt="">
+					</section>
+
+					<section class="center">
+						<h1>pagespeedtest.org</h1>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest.png" height="818" width="979" alt="">
+					</section>
+
+					<section>
+						<blockquote>
+							<h2>page speed index:</h2>
+							<h4>/[peyj] [speed] [in-deks]/</h4>
+							<p>
+								some hippie math that tells you how fast it "feels" to load your website.
+							</p>
+							<footer><a href="http://capitalfactory.lifesize.com/videos/video/853/">- Dave Rupert</a></footer>
+						</blockquote>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest-index.jpg" height="818" width="979" alt="">
+						<aside class="notes">
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest-load.jpg" height="818" width="979" alt="">
+						<aside class="notes">
+							<li>JS Load Event Fired: <strong>900ms - 2200ms</strong></li>
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest-dom.jpg" height="818" width="979" alt="">
+						<aside class="notes">
+							<li>DOM Content Loaded: <strong>1000ms - 2000ms</strong></li>
+						</aside>
+					</section>
+
+					<section class="center">
+						<video src="img/ibmdesign-video.mp4" autoplay controls></video>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest-req.jpg" height="818" width="979" alt="">
+						<aside class="notes">
+							<li>HTTP Requests: <strong>50 - 75</strong></li>
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/pagespeedtest-firstbite.jpg" height="818" width="979" alt="">
+						<aside class="notes">
+							<li>Time To First Byte: <strong>200ms - 350ms</strong></li>
+						</aside>
+					</section>
+
+					<section>
+						<h1>A Look at the Numbers:</h1>
+						<ul>
+							<li>Time To First Byte: <strong>200ms - 350ms</strong></li>
+							<li>DOM Content Loaded: <strong>1000ms - 2000ms</strong></li>
+							<li>JS Load Event Fired: <strong>900ms - 2200ms</strong></li>
+							<li>Total Download Size: <strong>1MB - 2MB</strong></li>
+							<li>DNS Lookup: <strong>10ms - 20ms</strong></li>
+							<li>HTTP Requests: <strong>50 - 75</strong></li>
+						</ul>
+						<aside class="notes">
+							the numbers all together based on North's recommendations
+						</aside>
+					</section>
+
+					<section>
+						<img src="img/pgspeednums.png" alt="">
+						<aside class="notes">
+							<a href="http://timkadlec.com/2014/01/fast-enough/">How Fast is Fast Enough?</a>
+							say a competitors site loads in 5 seconds. 20% of 5 seconds is 1 second. So to be perceived as faster than them, you need to have your pages taking no longer than 4 seconds (5 seconds load time - 20% difference).
+						</aside>
+					</section>
+
+					<section>
+						<h1>More of Sam's Hipster Numbers:</h1>
+						<ul>
+							<li>First Byte Time: <strong>85</strong></li>
+							<li>Use persistent connection: <strong>85</strong></li>
+							<li>Use gzip compression for transferring compressible responses: <strong>90</strong></li>
+							<li>Compress Images: <strong>90</strong></li>
+							<li>Use Progressive JPEGs: <strong>90</strong></li>
+							<li>Leverage browser caching of static assets: <strong>90</strong></li>
+							<li>Use a CDN for all static assets: <strong>85</strong></li>
+						</ul>
+					</section>
+
+					<section class="center">
+						<h1>Google PageSpeed Insights</h1>
+					</section>
+
+					<section><img src="img/psi1.png" alt=""></section>
+
+					<section><img src="img/psi2.png" alt=""></section>
+
+					<section>
+						<h1>Page Speed Insights Extension</h1>
+						<img src="img/perftoolbar.png" alt="">
+					</section>
+
+					<section>
+						<h1>Automate Your Performance Testing</h1>
+						<aside class="notes">
+							another great tool. the advantage here is its recommendation engine
+						</aside>
+					</section>
+
+					<section>
+						<h2>Javascript <a href="http://blog.cozycloud.cc/technic/2014/06/18/task-runners-comparison/">Task Runners</a></h2>
+						<img class="third" src="img/grunt.png" alt="">
+						<img class="third" src="img/gulp.png" alt="">
+						<img class="third" src="img/broccoli.png" alt="">
+					</section>
+
+					<section>
+						<h2>Using Gulp</h2>
+						<pre><code>var gulp = require('gulp');
+var psi = require('psi');
+var site = 'http://www.html5rocks.com';
+var key = '';
+
+// Please feel free to use the `nokey` option to try out PageSpeed
+// Insights as part of your build process. For more frequent use,
+// we recommend registering for your own API key. For more info:
+// https://developers.google.com/speed/docs/insights/v1/getting_started
+
+gulp.task('mobile', function () {
+    return psi(site, {
+        // key: key
+        nokey: 'true',
+        strategy: 'mobile',
+    }, function (err, data) {
+        console.log(data.score);
+        console.log(data.pageStats);
+    });
+});
+
+gulp.task('desktop', function () {
+    return psi(site, {
+        nokey: 'true',
+        // key: key,
+        strategy: 'desktop',
+    }, function (err, data) {
+        console.log(data.score);
+        console.log(data.pageStats);
+    });
+});
+
+gulp.task('default', ['mobile']);
+						</code></pre>
+						<pre><code>gulp</code></pre>
+						<ul>
+							<li><a href="https://www.npmjs.com/package/grunt-pagespeed">Grunt PageSpeed</a></li>
+							<li><a href="https://www.npmjs.com/package/grunt-phantomas">Grunt Phantomas</a></li>
+							<li><a href="https://github.com/addyosmani/psi-gulp-sample">Gulp PageSpeed Insights</a></li>
+							<li><a href="http://una.github.io/gulp-local-psi/">Local Testing with Gulp PSI</a></li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>The Performance Budget</h2>
+						<img src="img/1415552234perfbudget-task-failed.png" alt=""><br>
+						<ul>
+							<li><a href="http://danielmall.com/articles/how-to-make-a-performance-budget/">How to Make a Performance Budget</a></li>
+							<li><a href="https://www.npmjs.com/package/grunt-perfbudget">Grunt Perf Budget</a></li>
+						</ul>
+						<aside class="notes">
+							<li>What is your maximum expenditure?</li>
+							<li>How long are you willing to make your user wait?</li>
+							<li>Use competitive analysis to see where you are in relation to your competition</li>
+							<li>If your site is faster, it will convert users</li>
+						</aside>
+					</section>
+
+					<section style="width: 140%; margin-left: -20%" data-background="#3b4b54">
+						<img src="img/homepage-performance-dec2014.png" alt="">
+					</section>
+
+					<section>
+						<h1 style="font-weight:900" class="fragment">1000 PSI</h1>
+						<h1 style="font-weight:900" class="fragment">14 KB</h1>
+						<h1 style="font-weight:900" class="fragment">1 MB</h1>
+						<aside class="notes">
+						<li>lets take a look at those numbers from the begining again</li>
+						<li>The value of 14 KB has been measured empirically by Google and is the threshold for the first package exchanged between a server and client via towers on a cellular connection. You don’t need to include images within 14 Kb, but you might want to deliver the markup, style sheets and any JavaScript required to render the visible portion of the page in that threshold. Of course, in practice this value can only realistically be achieved with gzip compression.</li>
+						</aside>
+					</section>
+
+					<section data-background="img/pasted_image_at_2015_01_16_16_46.png">
+					<aside class="notes">
+						just because we have all of these great testing tools doesn't mean that they replace the real thing. Whenever you can, test with real devices. After all, experiencing the cake in context is better than someone else telling you how it tastes.
+					</aside>
+					</section>
+
+					<section>
+					<h1>More Resources</h1>
+					<ul>
+						<li><a href="http://perf.rocks">perf.rocks</a></li>
+						<li><a href="http://www.filamentgroup.com/lab/performance-rwd.html">Filament Group</a></li>
+						<li><a href="http://pointnorth.io/#performance">Point North</a></li>
+						<li><a href="http://browserdiet.com/en/">Browser Diet</a></li>
+						<li><a href="http://daverupert.com/2014/07/rwd-bloat/">Dave Rupert on RWD Bloat</a></li>
+						<li><a href="http://discover-devtools.codeschool.com/">Discover Devtools</a></li>
+						<li><a href="http://jankfree.com">Jank Free</a></li>
+					</ul>
+					</section>
+
+
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
