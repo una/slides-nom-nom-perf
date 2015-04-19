@@ -7,7 +7,7 @@
  * IBM Design Theme
  */
 .reveal {
-  font-weight: 400 !important; }
+  font-weight: 200 !important; }
   .reveal img {
     border: none !important;
     box-shadow: none !important; }
@@ -19,7 +19,7 @@
     .reveal .slides [data-background='#000'] blockquote {
       color: #fff !important; }
   .reveal code {
-    color: #41d6c3;
+    color: #af6ee8;
     background: #f4f4f4;
     outline: 1px solid #e0e0e0;
     padding: 0 .25em; }
@@ -45,7 +45,7 @@
       text-align: right;
       font-size: 80%; }
     .reveal blockquote em {
-      color: #41d6c3; }
+      color: #af6ee8; }
   .reveal .ibm-header {
     position: absolute;
     top: 0;
@@ -60,14 +60,13 @@
 
 .intro-slide .intro-text {
   font-weight: 800;
-  text-shadow: 0.05em 0.05em #112622; }
+  text-shadow: 0.05em 0.05em #31223c; }
 .intro-slide ul {
   margin: 4em 0 0 0; }
 .intro-slide li {
   font-size: 1.4em;
   list-style: none;
-  color: #41d6c3;
-  text-shadow: 0.1em 0.1em #112622; }
+  color: #fdd600; }
   .intro-slide li:first-child {
     font-weight: 800; }
 
@@ -105,7 +104,7 @@
 
 .labeled-list dd {
   font-size: 120%;
-  color: #41d6c3;
+  color: #af6ee8;
   margin-bottom: .25em;
   font-weight: 800; }
 .labeled-list dt {
@@ -189,11 +188,11 @@ body {
   font-size: 24px;
   font-weight: normal;
   letter-spacing: -0.02em;
-  color: #012b22; }
+  color: #412356; }
 
 ::selection {
   color: #fff;
-  background: #012b22;
+  background: #412356;
   text-shadow: none; }
 
 /*********************************************
@@ -206,7 +205,7 @@ body {
 .reveal h5,
 .reveal h6 {
   margin: 0 0 20px 0;
-  color: #41d6c3;
+  color: #af6ee8;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.2;
   letter-spacing: 0.02em;
@@ -220,7 +219,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #008571;
+  color: #9855d4;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
   -ms-transition: color .15s ease;
@@ -228,13 +227,13 @@ body {
   transition: color .15s ease; }
 
 .reveal a:not(.image):hover {
-  color: #00ebc8;
+  color: #c9a6e9;
   text-shadow: none;
   border: none; }
 
 .reveal .roll span:after {
   color: #fff;
-  background: #003930; }
+  background: #722db0; }
 
 /*********************************************
  * IMAGES
@@ -242,7 +241,7 @@ body {
 .reveal section img {
   margin: 15px 0px;
   background: rgba(255, 255, 255, 0.12);
-  border: 4px solid #012b22;
+  border: 4px solid #412356;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   -webkit-transition: all .2s linear;
   -moz-transition: all .2s linear;
@@ -252,7 +251,7 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #008571;
+  border-color: #9855d4;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
@@ -260,31 +259,31 @@ body {
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-  border-right-color: #008571; }
+  border-right-color: #9855d4; }
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-  border-left-color: #008571; }
+  border-left-color: #9855d4; }
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: #008571; }
+  border-bottom-color: #9855d4; }
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-  border-top-color: #008571; }
+  border-top-color: #9855d4; }
 
 .reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: #00ebc8; }
+  border-right-color: #c9a6e9; }
 
 .reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: #00ebc8; }
+  border-left-color: #c9a6e9; }
 
 .reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: #00ebc8; }
+  border-bottom-color: #c9a6e9; }
 
 .reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: #00ebc8; }
+  border-top-color: #c9a6e9; }
 
 /*********************************************
  * PROGRESS BAR
@@ -293,7 +292,7 @@ body {
   background: rgba(0, 0, 0, 0.2); }
 
 .reveal .progress span {
-  background: #008571;
+  background: #9855d4;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -304,6 +303,6 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-  color: #008571; }
+  color: #9855d4; }
 
 /*# sourceMappingURL=nomnomperf.css.map */

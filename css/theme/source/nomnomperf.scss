@@ -215,12 +215,12 @@ $font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $mainFont: $font-stack;
 $mainColor: #000;
 $headingFont: $font-stack;
-$mainColor: color('teal', 90);
-$headingColor: color('teal', 30);
+$mainColor: color('purple', 80);
+$headingColor: color('purple', 40);
 $backgroundColor: color('white');
-$linkColor: color('teal', 50);
+$linkColor: color('purple', 50);
 $linkColorHover: lighten( $linkColor, 20% );
-$selectionBackgroundColor: color('teal', 90);
+$selectionBackgroundColor: color('purple', 80);
 $headingTextShadow: none;
 $heading1TextShadow: $headingTextShadow;
 $headingTextTransform: initial;
@@ -231,7 +231,7 @@ $headingLineHeight: 1.2;
 $defaultLineHeight: 1.5;
 
 .reveal {
-	font-weight: 400 !important;
+	font-weight: 200 !important;
 
 	img { //oh reveal -__- your css makes me so sad
 		border: none !important;
@@ -330,8 +330,7 @@ $defaultLineHeight: 1.5;
 	li {
     font-size: 1.4em;
 		list-style: none;
-		color: $headingColor;
-    text-shadow: .1em .1em mix(#222, $mainColor, 50%);
+		color: #fdd600;
 
 		&:first-child {
 			font-weight: 800;
