@@ -214,20 +214,6 @@
 				</section>
 
 				<section>
-					<h1 style="font-weight:900" class="fragment">1000 PSI</h1>
-					<h1 style="font-weight:900" class="fragment">14 KB</h1>
-					<h1 style="font-weight:900" class="fragment">1 MB</h1>
-					<aside class="notes">
-						Before we move on, some important numbers:
-						<li>These are our goals, and we're going to look at how we will all work together to achieve these goals</li>
-						<li>On WebPageTest, aim for a Speed Index value of under 1000.</li>
-						<li>"Time to first byte": Ensure that all HTML, CSS and JavaScript fit within the first 14 KB.</li>
-						<li>these are the ideals we'll be striving for</li>
-						<li>1MB is the total download size we're going for on the site. Keep in mind data plans != cheap</li>
-					</aside>
-				</section>
-
-				<section>
 					<section class="center">
 						<h1>UX Architecture</h1>
 						<img class="center" style="width:80%;" src="img/Creme-Egg-Cake-Base-Ready-marthafied.com_-1024x697.jpg">
@@ -244,20 +230,14 @@
 						</aside>
 					</section>
 
-					<section class="center present" style="top: -293px; display: block;">
-						<h2>Why care about content strategy?</h2>
-						<dl class="labeled-list">
-							<div class="fragment visible" data-fragment-index="0">
-								<dt>Having an understanding of a product owner's content is imperative in order to produce an effective product/presentation/website/app/etc.</dt>
-							</div>
-							<div class="fragment visible" data-fragment-index="1">
-								<dt>Content strategy determines the success of the final product.</dt>
-							</div>
-							<div class="fragment visible" data-fragment-index="2">
-								<dt>Content is King.<br>
-								<img src="http://i.giphy.com/gf6iP1NIcDk7S.gif" alt="Kitty King"></dt>
-							</div>
-						</dl>
+					<section>
+						<img style="margin: 15% auto; display: block" src="img/Content-is-king.jpg" height="207" width="581" alt="">
+						<aside class="notes">What is the main point of your site? What are you trying to get the user to see or do? This should be up front and center. It should be the first thing they see.</aside>
+					</section>
+
+					<section>
+						<h2>Your Product IS Your Content</h2>
+						<aside class="notes">Content determines the success of your product. period.</aside>
 					</section>
 
 				</section>
@@ -366,10 +346,10 @@
 					</section>
 
 					<section>
-						<h1 style="font-weight:800">Oh Em Gee, Una! Won't That Make My Beautiful Images Look Terrible And Pixelated!?</h1>
+						<h1 style="font-weight:800">Won't That Make My Beautiful Images Look Terrible And Pixelated!?</h1>
 					</section>
 
-					<section class="center">
+					<section class="center" data-background="#2d0e3d">
 						<img src="img/no.gif" height="233" width="233" alt="">
 					</section>
 
@@ -483,36 +463,6 @@
 					<section>
 						<img src="img/cheap-operations.jpg" class="center" alt="">
 						<aside class="notes">http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/</aside>
-					</section>
-
-					<section>
-						<h2>Typography</h2>
-						<p><strong>FOIT:</strong> Flash of Invisible Type</p>
-						<img class="center" src="img/fastco.jpg" alt="">
-
-						<aside class="notes">
-						<li>We have to be careful about typography</li>
-						<li>Browsers may wait for fonts to load before displaying the page</li>
-						<li>Custom fonts represent a potential single point of failure for a usable site</li>
-						</aside>
-					</section>
-
-					<section>
-						<h2>Recommendations for Performant Typography:</h2>
-						<ul>
-						<li>To avoid this, here are a few recs</li>
-							<li class="fragment">Webfont formats: .ttf, .woff, .woff2</li>
-							<li class="fragment">2-5 Custom Fonts (including weights)</li>
-							<li class="fragment">Use a fallback font (Helvetica, Ariel)</li>
-							<li class="fragment"><strong>Subset</strong> typography in titles to avoid unused characters</li>
-							<li class="fragment">Do not block page render with @font-face definitions</li>
-						</ul>
-						<aside class="notes">
-						<li>woff == web open font format</li>
-						<li>you can use WOFF2 as a Base64 encoded string</li>
-						<li>new WOFF 2.0 Web Font compression format offers a 30% average gain over WOFF 1.0 (up to 50%+ in some cases). WOFF 2.0 is available since Chrome 36 and Opera 23</li>
-						<li>instead of referencing your fonts via links in the < head > or via @import statements in an external stylesheet, try to load your fonts and font content asynchronously. </li>
-						</aside>
 					</section>
 				</section>
 
@@ -669,8 +619,11 @@ gulp.task('scripts', function() {
 					</section>
 
 					<section>
-						<h1>The Critical Rendering Path</h1>
+					<blockquote>
+						<h2>critical rendering path:</h2>
+						<h4>/[krit-i-kuh l] [ren-der-ing] [path, pahth]/</h4>
 						<p class="fragment">The intermediate steps between receiving the HTML, CSS, and JavaScript bytes and the required processing to turn them into rendered pixels</p>
+					</blockquote>
 						<aside class="notes">
 							<li>Before we talk about how to load your js,</li>
 							<li>if you can avoid JavaScript or replace it with CSS, do that</li>
@@ -795,14 +748,14 @@ gulp.task('scripts', function() {
 					<section>
 						<img src="img/pagespeedtest-load.jpg" height="818" width="979" alt="">
 						<aside class="notes">
-							<li>JS Load Event Fired: <strong>900ms - 2200ms</strong></li>
+							<li>JS Load Event Fired:<strong>900ms - 2200ms</strong></li>
 						</aside>
 					</section>
 
 					<section>
 						<img src="img/pagespeedtest-dom.jpg" height="818" width="979" alt="">
 						<aside class="notes">
-							<li>DOM Content Loaded: <strong>1000ms - 2000ms</strong></li>
+							<li>DOM Content Loaded:<strong>1000ms - 2000ms</strong></li>
 						</aside>
 					</section>
 
@@ -813,7 +766,7 @@ gulp.task('scripts', function() {
 					<section>
 						<img src="img/pagespeedtest-req.jpg" height="818" width="979" alt="">
 						<aside class="notes">
-							<li>HTTP Requests: <strong>50 - 75</strong></li>
+							<li>HTTP Requests:<strong>50 - 75</strong></li>
 						</aside>
 					</section>
 
@@ -826,7 +779,7 @@ gulp.task('scripts', function() {
 
 					<section>
 						<h1>A Look at the Numbers:</h1>
-						<ul>
+						<ul style="width: 80%;">
 							<li>Time To First Byte: <strong>200ms - 350ms</strong></li>
 							<li>DOM Content Loaded: <strong>1000ms - 2000ms</strong></li>
 							<li>JS Load Event Fired: <strong>900ms - 2200ms</strong></li>
@@ -848,7 +801,7 @@ gulp.task('scripts', function() {
 					</section>
 
 					<section>
-						<h1>More of Sam's Hipster Numbers:</h1>
+						<h1>More Hipster Numbers:</h1>
 						<ul>
 							<li>First Byte Time: <strong>85</strong></li>
 							<li>Use persistent connection: <strong>85</strong></li>
@@ -857,6 +810,7 @@ gulp.task('scripts', function() {
 							<li>Use Progressive JPEGs: <strong>90</strong></li>
 							<li>Leverage browser caching of static assets: <strong>90</strong></li>
 							<li>Use a CDN for all static assets: <strong>85</strong></li>
+							<li class="fragment"><a href="http://pointnorth.io">Cited from Point North</a></li>
 						</ul>
 					</section>
 
@@ -956,7 +910,9 @@ gulp.task('default', ['mobile']);
 						<h1 style="font-weight:900" class="fragment">14 KB</h1>
 						<h1 style="font-weight:900" class="fragment">1 MB</h1>
 						<aside class="notes">
-						<li>lets take a look at those numbers from the begining again</li>
+							<li>To review, these are our goals/ideals for first byte time with gzip compression</li>
+							<li>On WebPageTest, aim for a Speed Index value of under 1000.</li>
+							<li>"Time to first byte": Ensure that all HTML, CSS and JavaScript fit within the first 14 KB.</li>
 						<li>The value of 14 KB has been measured empirically by Google and is the threshold for the first package exchanged between a server and client via towers on a cellular connection. You don’t need to include images within 14 Kb, but you might want to deliver the markup, style sheets and any JavaScript required to render the visible portion of the page in that threshold. Of course, in practice this value can only realistically be achieved with gzip compression.</li>
 						</aside>
 					</section>
