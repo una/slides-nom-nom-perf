@@ -498,9 +498,15 @@
 					</section>
 
 					<section>
+						<img src="img/video-fps-meter.gif" height="497" width="921" alt="">
+						<aside class="notes">Rendering in the bottom console: <b>"Show FPS meter</b> and <b>"Show paint rectangles"</b></aside>
+					</section>
+
+					<section>
 						<h1>Layout Thrashing</h1>
 						<h2>Avoid the dreaded document reflow!</h2>
 						<aside class="notes">
+						<li>Layout is where the browser figures out the geometric information for elements: their size and location in the page</li>
 							<li><b>Layout Thrashing</b> occurs when JavaScript violently writes, then reads, from the DOM, multiple times causing document reflows.</li>
 							<li>Kills performance</li>
 							<li>Really bad on mobile devices</li>
