@@ -62,7 +62,7 @@
 					</section>
 
 					<section class="center" style="font-size:1.2em">
-						<h2><a href="http://una.github.io/nom-nom-perf">una.github.io/nom-nom-perf</a></h2>
+						<h2><a href="http://una.github.io/nom-nom-perf">una.im/slides-nom-nom-perf</a></h2>
 						<h2>@una</h2>
 					</section>
 
@@ -145,12 +145,23 @@
 						<aside class="notes">
 							<ul>
 								<li>That's a lot of missed ads and revenue. In fact, let's look at the numbers:</li>
-								<li>a daily loss of $111,000, or about $40.5 Million a year</li>
 							</ul>
 						</aside>
 					</section>
 
-					<section class="center">
+					<section data-background="#4C2F52">
+						<h1>
+							<ul style="color:white">
+								<li><b>8 million searches</b></li>
+								<li class="fragment">$111,000/day</li>
+								<li class="fragment">$40.5 million/year</li>
+							</ul>
+						</h1>
+						<aside class="notes">
+						<li>a daily loss of $111,000, or about $40.5 Million a year</li></aside>
+					</section>
+
+					<section data-background="#5E5B5A" class="center">
 						<img style="  width: 700px; margin-top: -1em;" src="img/burning-money.gif">
 					</section>
 
@@ -169,6 +180,13 @@
 							<img style="width: 15%; display: inline-block;" src="img/Happy_smiley_face.png" alt="happy user">
 						</div>
 						<aside class="notes">
+
+						<script>
+						Reveal.addEventListener( 'smiley-rolls', function() {
+						    var elem = document.querySelector('img:nth-child(4)');
+						    elem.classList.add("rollaway");
+						}, false );
+						</script>
 
 						</aside>
 					</section>
@@ -192,9 +210,6 @@
 						<blockquote class="fragment">51% of mobile internet users say that they’ve encountered a website that crashed, froze, or received an error.
 						<footer><a href="https://blog.kissmetrics.com/loading-time/">Kiss Metrics</a></footer>
 						</blockquote>
-						<aside class="notes">
-							We all know these pains far too well. Lets not inflict them upon others.
-						</aside>
 					</section>
 
 					<section data-background="#4C2F52">
@@ -204,12 +219,12 @@
 						</aside>
 					</section>
 
-					<section class="center">
+					<section class="center" data-background="#4C2F52">
 						<img src="img/facepalm.gif" alt="Facepalm gif">
 					</section>
 
-					<section class="center">
-						<h1>It's about <a href="http://www.webperformancetoday.com/2012/03/21/neuroscience-page-speed-web-performance/">Neuroscience</a></h1>
+					<section data-background="#5E5B5A" class="center">
+						<h1>It's about <a style="color:white" href="http://www.webperformancetoday.com/2012/03/21/neuroscience-page-speed-web-performance/">Neuroscience</a></h1>
 						<aside class="notes">
 						<li>Tammy Everts -- its about neuroscience, not entitlement</li>
 						<li>Comes down to 2 phenomenons:</li>
@@ -220,6 +235,8 @@
 
 					<section>
 						<h1 class="center">Web Stress</h1>
+						<img class="fragment" src="img/computer-freeze-comic.jpg" style="margin:0 auto; display:block;
+						width: 400px;" alt="">
 						<aside class="notes">
 							<li>Slow pages cause “web stress”: physically measurable increased agitation and poorer concentration. because of poor short term memory. Humans aren't good at remembering things. Doorway Effect</li>
 						</aside>
@@ -227,7 +244,7 @@
 
 					<section>
 						<h1 class="center">The Doorway Effect</h1>
-						<img class="center fragment" src="img/dudewhersmycar.gif" alt="">
+						<img style="width:800px;" class="center fragment" src="img/dudewhersmycar.gif" alt="">
 						<aside class="notes">
 							Doorway Effect explains why we can go searching for something in one room, walk into another room to look for it, and forget what we were looking for in the first place. This is due to our sensory memory, which works surprisingly similarly to a computer's memory bank. When presented with new stimuli, it halts the fluidity of the previous task, and can confuse us as to the task at hand.
 						</aside>
@@ -247,7 +264,7 @@
 
 				</section>
 
-				<section>
+				<section data-background="#454242">
 					<section class="center">
 						<h1>UX Architecture</h1>
 						<img class="center" style="width:80%;" src="img/Creme-Egg-Cake-Base-Ready-marthafied.com_-1024x697.jpg">
@@ -291,7 +308,7 @@
 				</section>
 
 				<section>
-					<section class="center">
+					<section data-background="#454242" class="center">
 						<h1>UI Design</h1>
 						<img src="img/Professional-lego-cake-idea.jpg" alt="lego cake!">
 						<aside class="notes">
@@ -545,7 +562,7 @@
 				</section>
 
 				<section>
-					<section class="center">
+					<section data-background="#454242" class="center">
 						<h1>Front End Development</h1>
 						<img src="img/cupcaketruck.jpg" style="width:80%;" alt="Cupcake Truck">
 						<aside class="notes">
@@ -581,16 +598,18 @@
 						<img src="img/image01.png" alt="">
 					</section>
 
-					<section>
-					<style>.cmat {
-						font-weight: 800 !important;
-						color: #000 !important;
+					<section data-background="#2d0e3d">
+					<style>.cmat-list span{
+						color: #fdd600 ;
 						}</style>
-						<h1 class="cmat">CMAT</h1>
-						<h2 class="fragment">Concatenate</h2>
-						<h2 class="fragment">Minify</h2>
-						<h2 class="fragment">Async</h2>
-						<h2 class="fragment">Test</h2>
+						<h1 style="color: #fdd600;" class="cmat">CMAT</h1>
+						<h1 class="cmat-list">
+						<ul>
+							<li class="fragment"><span>C</span>oncatenate</li>
+							<li class="fragment"><span>M</span>inify</li>
+							<li class="fragment"><span>A</span>sync</li>
+							<li class="fragment"><span>T</span>est</li>
+						</ul>
 						<aside class="notes">
 							and the way we will achieve that ideal waterfall is to think: CMAT
 						</aside>
@@ -798,7 +817,7 @@ gulp.task('scripts', function() {
 						<img src="img/chrome-audits.png" alt="">
 					</section>
 
-					<section class="center">
+					<section data-background="#2d0e3d" class="center">
 						<h1>pagespeedtest.org</h1>
 					</section>
 
@@ -892,7 +911,7 @@ gulp.task('scripts', function() {
 						</ul>
 					</section>
 
-					<section class="center">
+					<section data-background="#2d0e3d" class="center">
 						<h1>Google PageSpeed Insights</h1>
 					</section>
 
@@ -905,7 +924,7 @@ gulp.task('scripts', function() {
 						<img src="img/perftoolbar.png" alt="">
 					</section>
 
-					<section>
+					<section data-background="#2d0e3d">
 						<h1>Automate Your Performance Testing</h1>
 						<aside class="notes">
 							another great tool. the advantage here is its recommendation engine
@@ -983,7 +1002,7 @@ gulp.task('default', ['mobile']);
 						<img src="img/homepage-performance-dec2014.png" alt="">
 					</section>
 
-					<section>
+					<section data-background="#2d0e3d">
 						<h1 style="font-weight:900" class="fragment">1000 PSI</h1>
 						<h1 style="font-weight:900" class="fragment">14 KB</h1>
 						<h1 style="font-weight:900" class="fragment">1 MB</h1>
