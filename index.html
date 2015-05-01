@@ -277,7 +277,6 @@
 						<h2 style="background: white; display:inline-block; padding:.5em;">Content Strategy</h2>
 						<aside class="notes">
 							<li>content is what you decide to put into the cake -- its ingredients -- you wouldn't mix onion powder and eggnog and cherries. limit yourself to only content or ingredients that blend well together and are needed to support your recipe, or app.</li>
-							<li>Already had sessions on this -- wont go into it -- its just important to remember how important it is for perf to consider what you're serving up in the first place</li>
 						</aside>
 					</section>
 
@@ -291,7 +290,17 @@
 						<aside class="notes"><li>Content determines the success of your product. period.</li>
 						<li>If you don't stop and think about your content, nothing else I will tell you in this talk will matter that much</li>
 						<li>Content optimizations are the best thing you can do to optimize performance.</li></aside>
+						</section>
+
+						<section class="text-center">
+						<h1>Care About What Matters Most First</h1>
+						<aside class="notes">
+						<li>jQuery minified is 86kb, avg. image online is 654kb</li>
+						<li>Remove 1/5 of one image and you can have all the jQuery you want</li></aside>
 					</section>
+
+					<section class="center"><img src="img/page-growth.gif">
+					<aside class="notes">size of websites still increasing</aside></section>
 
 					<section data-background="#4C2F52">
 						<h1>Do I really need that?</h1>
@@ -303,6 +312,7 @@
 
 					<section data-background="#4C2F52">
 						<h1>What Next?</h1>
+						<aside class="notes">What do you want your user to do next?</aside>
 					</section>
 
 				</section>
@@ -379,6 +389,7 @@
 							"Never put an image on the web that you haven't optimized"
 							<footer>- Dave Rupert</footer>
 						</blockquote>
+						<aside class="notes">tell this to your clients</aside>
 					</section>
 
 					<section>
@@ -405,7 +416,7 @@
 							<li>TinyPNG: integrate into build tools</li>
 							<li>ImageOptim goes through lossless compression algorithms to get the smallest size</li>
 							<li>compressor.io <-- web version</li>
-							<li><a href="img/svgo.png"></a></li>
+							<li>SVGO, also build tools and web version</li>
 							<li>http://addyosmani.com/blog/image-optimization-tools/</li>
 						</aside>
 					</section>
@@ -458,7 +469,7 @@
 						<li>Webpage Test Warns You of this</li>
 						<li>A simple or "baseline" JPEG file is stored as one top-to-bottom scan of the
 						image.  Progressive JPEG divides the file into a series of scans.</li>
-						<li>http://blog.patrickmeenan.com/2013/06/progressive-jpegs-ftw.html</li>
+						<li>huge percieved performance win</li>
 						</aside>
 					</section>
 
@@ -473,7 +484,7 @@
 
 					<section class="center" data-background="#FCF3E4">
 						<h1>Retina Images</h1>
-						<img src="img/Fancy.jpg" alt="">
+						<img class="fragment" src="img/Fancy.jpg" alt="">
 						<aside class="notes">
 							<li>goes back to the content strategy side of things -- showing why its important to understand the whole process</li>
 							<li>retina images look nice on screens but are really terrible for users</li>
@@ -483,17 +494,14 @@
 						</aside>
 					</section>
 
-					<section>
-					<img src="img/jqueryloading.png" alt="">
-						<aside class="notes">
-							<li>speaking of being considerate of images, think about your code in this way too</li>
-							<li>jQuery loading times across devices -- on the same network</li>
-							<li>not everyone is using the same nice new MacBook Pros that we get here</li>
-						</aside>
-					</section>
-
 					<section data-background="#4C2F52">
 						<h1>Do I really need that?</h1>
+					</section>
+
+					<section class='center'>
+						<h1>Picturefill</h1>
+						<img src="img/picturefill.png" alt="">
+						<aside class="notes"><li>if you need to use retina images, consider picturefill</li><li>polyfill for the picture element and source set</li><li>serve images based on a variety of conditions like screen size, viewport size, and screen resolution</li></aside>
 					</section>
 
 					<section>
@@ -508,7 +516,7 @@
 
 					<section class="center">
 					<img src="img/frames_mode.png">
-						<aside>
+						<aside class="notes">
 								<li>you can see how your page is rendering when you open the timeline mode in Chrome dev tools and select Frames</li>
 								<li>Hit record, do something, stop it, inspect</li>
 						</aside>
@@ -592,10 +600,6 @@
 							Analytics, advertising, third-party content</li>
 							<li></li>
 						</aside>
-					</section>
-
-					<section class="center">
-						<img src="img/image01.png" alt="">
 					</section>
 
 					<section data-background="#2d0e3d">
@@ -891,10 +895,6 @@ gulp.task('scripts', function() {
 
 					<section>
 						<img src="img/pgspeednums.png" alt="">
-						<aside class="notes">
-							<a href="http://timkadlec.com/2014/01/fast-enough/">How Fast is Fast Enough?</a>
-							say a competitors site loads in 5 seconds. 20% of 5 seconds is 1 second. So to be perceived as faster than them, you need to have your pages taking no longer than 4 seconds (5 seconds load time - 20% difference).
-						</aside>
 					</section>
 
 					<section>
@@ -926,9 +926,6 @@ gulp.task('scripts', function() {
 
 					<section data-background="#2d0e3d">
 						<h1>Automate Your Performance Testing</h1>
-						<aside class="notes">
-							another great tool. the advantage here is its recommendation engine
-						</aside>
 					</section>
 
 					<section>
@@ -994,16 +991,18 @@ gulp.task('default', ['mobile']);
 							<li>What is your maximum expenditure?</li>
 							<li>How long are you willing to make your user wait?</li>
 							<li>Use competitive analysis to see where you are in relation to your competition</li>
-							<li>If your site is faster, it will convert users</li>
 						</aside>
 					</section>
 
 					<section style="width: 140%; margin-left: -20%" data-background="#3b4b54">
 						<img src="img/homepage-performance-dec2014.png" alt="">
+						<aside class="notes">							<li><a href="http://timkadlec.com/2014/01/fast-enough/">How Fast is Fast Enough?</a> You want to be 20% faster to be percieved as faster. </li><li>
+							say a competitors site loads in 5 seconds. 20% of 5 seconds is 1 second. So to be perceived as faster than them, you need to have your pages taking no longer than 4 seconds</li>
+							<li>If your site is faster, it will convert users</li></aside>
 					</section>
 
 					<section data-background="#2d0e3d">
-						<h1 style="font-weight:900" class="fragment">1000 PSI</h1>
+						<h1 style="font-weight:900" 1000 PSI</h1>
 						<h1 style="font-weight:900" class="fragment">14 KB</h1>
 						<h1 style="font-weight:900" class="fragment">1 MB</h1>
 						<aside class="notes">
@@ -1020,8 +1019,9 @@ gulp.task('default', ['mobile']);
 					</aside>
 					</section>
 
-					<section>
-					<h1>More Resources</h1>
+					<section data-background="#454242">
+					<h1>Thank You!</h1>
+					<h2>@una</h2>
 					<ul>
 						<li><a href="http://perf.rocks">perf.rocks</a></li>
 						<li><a href="http://www.filamentgroup.com/lab/performance-rwd.html">Filament Group</a></li>
